@@ -1,0 +1,122 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: vector-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: vector_db
+      POSTGRES_INITDB_ARGS: "--data-checksums"
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+      PGSSLMODE: "allow"
+      POSTGRES_LISTEN_ADDRESSES: "*"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-vector-db.sql:/docker-entrypoint-initdb.d/init-vector-db.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - postgres-network
+      - default
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: vector-pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - postgres
+    networks:
+      - postgres-network
+
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: vector-n8n
+    restart: always
+    environment:
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - N8N_HOST=localhost
+      - NODE_ENV=production
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_HOST=postgres
+      - DB_POSTGRESDB_PORT=5432
+      - DB_POSTGRESDB_DATABASE=vector_db
+      - DB_POSTGRESDB_USER=postgres
+      - DB_POSTGRESDB_PASSWORD=postgres
+      - N8N_ENCRYPTION_KEY=your-secret-encryption-key
+      # Ollama connection variables
+      - OLLAMA_HOST=vector-ollama
+      - OLLAMA_PORT=11434
+      - OLLAMA_API_URL=http://vector-ollama:11434
+    ports:
+      - "5678:5678"
+    volumes:
+      - n8n_data:/home/node/.n8n
+    depends_on:
+      - postgres
+    networks:
+      - postgres-network
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: vector-ollama
+    restart: always
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+      - ./ollama-init.sh:/ollama-init.sh
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+    entrypoint: ["/bin/sh", "-c", "chmod +x /ollama-init.sh && ollama serve"]
+    networks:
+      - postgres-network
+    # No healthcheck needed
+    # Let the container use its default command (ollama serve)
+    # and use a separate container for initialization
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+    # # For CPU-only, comment out the deploy section above
+  
+  # # Сервис для инициализации и выполнения скриптов
+  # init-scripts:
+  #   image: alpine:latest
+  #   container_name: vector-init-scripts
+  #   volumes:
+  #     - ./setup-llama.sh:/scripts/setup-llama.sh
+  #     - ./stop-local-ollama.sh:/scripts/stop-local-ollama.sh
+  #   command: >
+  #     /bin/sh -c "
+  #       chmod +x /scripts/setup-llama.sh /scripts/stop-local-ollama.sh &&
+  #       echo 'Все скрипты сделаны исполняемыми' &&
+  #       exit 0
+  #     "
+  #   restart: "no"
+
+volumes:
+  postgres_data:
+  pgadmin_data:
+  n8n_data:
+  ollama_data:
+
+networks:
+  postgres-network:
+    driver: bridge

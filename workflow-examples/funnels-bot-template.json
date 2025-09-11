@@ -1,0 +1,268 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1.1,
+      "position": [
+        1344,
+        288
+      ],
+      "id": "66fb1790-78ed-4408-8c09-9073e985e7b1",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "model": "llama3.2:latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        224,
+        128
+      ],
+      "id": "6d593a78-a6e5-41d7-9c57-99d3e46e6741",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "MbCHS8Q4H07Gukzb",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "llama3.2:latest"
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOllama",
+      "typeVersion": 1,
+      "position": [
+        816,
+        288
+      ],
+      "id": "78e5c2a6-f002-4d9c-848c-9f4514b6ea51",
+      "name": "Embeddings Ollama",
+      "credentials": {
+        "ollamaApi": {
+          "id": "MbCHS8Q4H07Gukzb",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        368,
+        128
+      ],
+      "id": "ed826d35-50b4-4aea-9c94-aa0c33b36a34",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        352,
+        -80
+      ],
+      "id": "bf99b7e0-dfb1-4dd7-8418-69fde96bf887",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "public": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        128,
+        -64
+      ],
+      "id": "54c86dda-449f-4492-b9fa-c5f5d108f2c0",
+      "name": "When chat message received",
+      "webhookId": "aad19426-9d72-4cd3-a49c-2999c1a73d4a"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "tableName": "funnels",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePGVector",
+      "typeVersion": 1.3,
+      "position": [
+        1296,
+        128
+      ],
+      "id": "5ff30b82-025b-49d3-aab5-7401e9987d11",
+      "name": "Загрузить данные о воронках в базу руками",
+      "credentials": {
+        "postgres": {
+          "id": "ztwBBKtdmqJAMOfa",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "dada",
+        "tableName": "funnels",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePGVector",
+      "typeVersion": 1.3,
+      "position": [
+        704,
+        128
+      ],
+      "id": "263d0bac-6376-43c1-a259-c1aa7a742c02",
+      "name": "Подобрать тип воронки",
+      "credentials": {
+        "postgres": {
+          "id": "ztwBBKtdmqJAMOfa",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "completion",
+        "completionTitle": "Loaded",
+        "completionMessage": "Loaded funnel info",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.form",
+      "typeVersion": 2.3,
+      "position": [
+        976,
+        128
+      ],
+      "id": "7fa5335f-f31b-4502-b85d-8e573562fb40",
+      "name": "Форма добавления воронки в базу",
+      "webhookId": "f46b6e49-2ef5-41a2-bcbe-bffbeded00f6"
+    },
+    {
+      "parameters": {
+        "jsCode": "const results = [];\n\nfor (const inputItem of $input.all()) {\n  const rawText = inputItem.json.description || \"\";\n  \n  let parsed;\n  try {\n    parsed = JSON.JSON\n  } catch (e) {\n    throw new Error(\"Can't parse input as valid JSON: \" + e.message);\n  }\n  \n  // Добавляем все пары ключ-значение в результат\n  Object.entries(parsed).forEach(([key, value]) => {\n    results.push({\n      json: {\n        key: key,\n        value: value\n      }\n    });\n  });\n}\n\nreturn results;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1136,
+        128
+      ],
+      "id": "a169730a-5646-4b6e-91c7-97055e02974d",
+      "name": "Парсер"
+    }
+  ],
+  "connections": {
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Загрузить данные о воронках в базу руками",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Ollama": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Загрузить данные о воронках в базу руками",
+            "type": "ai_embedding",
+            "index": 0
+          },
+          {
+            "node": "Подобрать тип воронки",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Подобрать тип воронки": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Форма добавления воронки в базу": {
+      "main": [
+        [
+          {
+            "node": "Парсер",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Парсер": {
+      "main": [
+        [
+          {
+            "node": "Загрузить данные о воронках в базу руками",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "3006a5d6772217f5ebf10e103499012896c18b16962721572449c979edef3060"
+  }
+}
