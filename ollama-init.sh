@@ -1,22 +1,20 @@
 #!/bin/sh
 
-# Wait for Ollama service to be ready
-echo "Waiting for Ollama service to start..."
-until curl -s http://ollama:11434/api/version > /dev/null 2>&1; do
-  echo "Waiting for Ollama API to be available..."
-  sleep 2
-done
+# Start ollama server in the background
+ollama serve &
 
-echo "Ollama service is ready!"
+# Save the PID of the ollama serve process
+OLLAMA_PID=$!
 
-# Check if Llama 3.2 model is already installed
-MODEL_LIST=$(curl -s http://ollama:11434/api/tags)
-if echo "$MODEL_LIST" | grep -q "llama3.2"; then
-  echo "Llama 3.2 model is already installed."
-else
-  echo "Pulling Llama 3.2 model (this may take a while)..."
-  curl -X POST http://ollama:11434/api/pull -d '{"name": "llama3.2"}'
-  echo "Llama 3.2 model has been installed successfully!"
-fi
+# Wait for ollama to be ready
+echo "Waiting for Ollama to start..."
+sleep 10
 
-echo "Initialization complete!"
+# Pull the model
+echo "Pulling llama3.2 model..."
+ollama pull llama3.2
+
+echo "Model pulled successfully!"
+
+# Wait for the ollama serve process to keep the container running
+wait $OLLAMA_PID

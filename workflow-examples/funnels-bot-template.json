@@ -1,4 +1,5 @@
 {
+  "name": "My workflow",
   "nodes": [
     {
       "parameters": {
@@ -7,10 +8,10 @@
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "typeVersion": 1.1,
       "position": [
-        1344,
-        288
+        800,
+        352
       ],
-      "id": "66fb1790-78ed-4408-8c09-9073e985e7b1",
+      "id": "d161f122-177d-4a5b-a12a-8948e55871bc",
       "name": "Default Data Loader"
     },
     {
@@ -21,15 +22,15 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
       "typeVersion": 1,
       "position": [
-        224,
-        128
+        -320,
+        192
       ],
-      "id": "6d593a78-a6e5-41d7-9c57-99d3e46e6741",
+      "id": "5664c975-c8b2-43e5-b625-c63c916422b3",
       "name": "Ollama Chat Model",
       "credentials": {
         "ollamaApi": {
-          "id": "MbCHS8Q4H07Gukzb",
-          "name": "Ollama account"
+          "id": "NeEDdqAYM2TdrqKY",
+          "name": "Ollama account 3"
         }
       }
     },
@@ -40,15 +41,15 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOllama",
       "typeVersion": 1,
       "position": [
-        816,
-        288
+        272,
+        352
       ],
-      "id": "78e5c2a6-f002-4d9c-848c-9f4514b6ea51",
+      "id": "bc7b6fd8-bbf9-4087-a3b5-88c81fb4f735",
       "name": "Embeddings Ollama",
       "credentials": {
         "ollamaApi": {
-          "id": "MbCHS8Q4H07Gukzb",
-          "name": "Ollama account"
+          "id": "o6sNPCtiHfQkdyMs",
+          "name": "Ollama account 2"
         }
       }
     },
@@ -57,10 +58,10 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        368,
-        128
+        -176,
+        192
       ],
-      "id": "ed826d35-50b4-4aea-9c94-aa0c33b36a34",
+      "id": "a68e2af4-c98b-4233-9b7d-c9759ee4581d",
       "name": "Simple Memory"
     },
     {
@@ -70,10 +71,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
       "position": [
-        352,
-        -80
+        -192,
+        -16
       ],
-      "id": "bf99b7e0-dfb1-4dd7-8418-69fde96bf887",
+      "id": "de72b9b6-6e44-49d4-b6af-986ab23e861d",
       "name": "AI Agent"
     },
     {
@@ -84,10 +85,10 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.3,
       "position": [
-        128,
-        -64
+        -416,
+        0
       ],
-      "id": "54c86dda-449f-4492-b9fa-c5f5d108f2c0",
+      "id": "2b5653cf-8038-4036-8fef-7c1f177ecc7b",
       "name": "When chat message received",
       "webhookId": "aad19426-9d72-4cd3-a49c-2999c1a73d4a"
     },
@@ -100,15 +101,15 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStorePGVector",
       "typeVersion": 1.3,
       "position": [
-        1296,
-        128
+        752,
+        192
       ],
-      "id": "5ff30b82-025b-49d3-aab5-7401e9987d11",
+      "id": "9ce907bf-52dc-4efa-84c4-ad2d8aecaa90",
       "name": "Загрузить данные о воронках в базу руками",
       "credentials": {
         "postgres": {
-          "id": "ztwBBKtdmqJAMOfa",
-          "name": "Postgres account"
+          "id": "lrHMf1lX0DQaI1Dx",
+          "name": "Postgres account 2"
         }
       }
     },
@@ -122,14 +123,14 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStorePGVector",
       "typeVersion": 1.3,
       "position": [
-        704,
-        128
+        160,
+        192
       ],
-      "id": "263d0bac-6376-43c1-a259-c1aa7a742c02",
+      "id": "f106a2f9-a6bb-43ba-9831-8f18a92798ef",
       "name": "Подобрать тип воронки",
       "credentials": {
         "postgres": {
-          "id": "ztwBBKtdmqJAMOfa",
+          "id": "hcNb0zCTf0vODiX8",
           "name": "Postgres account"
         }
       }
@@ -144,10 +145,10 @@
       "type": "n8n-nodes-base.form",
       "typeVersion": 2.3,
       "position": [
-        976,
-        128
+        432,
+        192
       ],
-      "id": "7fa5335f-f31b-4502-b85d-8e573562fb40",
+      "id": "54c17193-d2c4-4db4-9a02-9adee07dfe04",
       "name": "Форма добавления воронки в базу",
       "webhookId": "f46b6e49-2ef5-41a2-bcbe-bffbeded00f6"
     },
@@ -158,13 +159,14 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1136,
-        128
+        592,
+        192
       ],
-      "id": "a169730a-5646-4b6e-91c7-97055e02974d",
+      "id": "efb1f886-f1ff-404a-b729-a6448e234634",
       "name": "Парсер"
     }
   ],
+  "pinData": {},
   "connections": {
     "Default Data Loader": {
       "ai_document": [
@@ -260,9 +262,15 @@
       ]
     }
   },
-  "pinData": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "a0bb654e-d0aa-47f9-98ce-c9d8c1f22cef",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "3006a5d6772217f5ebf10e103499012896c18b16962721572449c979edef3060"
-  }
+  },
+  "id": "MA1Mqo2jo8bIOaDy",
+  "tags": []
 }

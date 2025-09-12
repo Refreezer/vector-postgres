@@ -1,0 +1,11 @@
+FROM ollama/ollama:latest
+
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+
+# Copy the initialization script
+COPY ollama-init.sh /ollama-init.sh
+RUN chmod +x /ollama-init.sh
+
+# Use shell to execute the init script
+ENTRYPOINT ["/bin/sh"]
+CMD ["/ollama-init.sh"]
