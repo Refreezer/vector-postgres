@@ -6,7 +6,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: vector_db
+      POSTGRES_DB: n8n
       POSTGRES_INITDB_ARGS: "--data-checksums"
       POSTGRES_HOST_AUTH_METHOD: "trust"
       PGSSLMODE: "allow"
@@ -49,14 +49,16 @@ services:
       - N8N_PORT=5678
       - N8N_PROTOCOL=http
       - N8N_HOST=localhost
+      - N8N_SECURE_COOKIE=false
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
       - NODE_ENV=production
       - DB_TYPE=postgresdb
       - DB_POSTGRESDB_HOST=postgres
       - DB_POSTGRESDB_PORT=5432
-      - DB_POSTGRESDB_DATABASE=vector_db
+      - DB_POSTGRESDB_DATABASE=n8n
       - DB_POSTGRESDB_USER=postgres
       - DB_POSTGRESDB_PASSWORD=postgres
-      - N8N_ENCRYPTION_KEY=your-secret-encryption-key
+        #- N8N_ENCRYPTION_KEY=your-secret-encryption-key
       # Ollama connection variables
       - OLLAMA_HOST=vector-ollama
       - OLLAMA_PORT=11434
