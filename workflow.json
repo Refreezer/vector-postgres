@@ -2,81 +2,96 @@
   "nodes": [
     {
       "parameters": {
-        "public": true,
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.3,
       "position": [
-        128,
-        -64
+        0,
+        0
       ],
-      "id": "54c86dda-449f-4492-b9fa-c5f5d108f2c0",
+      "id": "71bc8057-ba3c-426c-ab98-2eff4d2362e7",
       "name": "When chat message received",
-      "webhookId": "aad19426-9d72-4cd3-a49c-2999c1a73d4a"
+      "webhookId": "6dff4f0c-1819-4f33-b5aa-360e43fad9b0"
     },
     {
       "parameters": {
+        "promptType": "define",
+        "text": "=Пользователь говорит:\n{{ $json.chatInput }}\nЕсли это не связано с воронкой продаж, то будь вежлив и скажи что хочешь помочь ему с маркетингом.\n\n\nИначе: Он хочет узнать какой тип воронки продаж  пподойдет ему больше всего. \n\nПоищи в векторном хранилище, найди лучшее\nсоответствие и расскажи ему про эту воронку",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
       "position": [
-        352,
-        -80
+        208,
+        0
       ],
-      "id": "bf99b7e0-dfb1-4dd7-8418-69fde96bf887",
+      "id": "9b2d4827-a440-4cec-8f3c-801553182c2a",
       "name": "AI Agent"
     },
     {
-      "parameters": {},
-      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
-      "typeVersion": 1.3,
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
       "position": [
-        368,
-        128
+        80,
+        208
       ],
-      "id": "ed826d35-50b4-4aea-9c94-aa0c33b36a34",
-      "name": "Simple Memory"
+      "id": "88b07623-e503-4af4-898a-d66b961a8573",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "mrmnOe1SW7Qiuamb",
+          "name": "OpenAi account"
+        }
+      }
     },
     {
       "parameters": {
-        "mode": "retrieve-as-tool",
-        "toolDescription": "dada",
-        "tableName": "",
-        "options": {}
+        "tableName": "funnel_chat_histories"
       },
-      "type": "@n8n/n8n-nodes-langchain.vectorStorePGVector",
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
       "typeVersion": 1.3,
       "position": [
-        560,
-        128
+        224,
+        208
       ],
-      "id": "263d0bac-6376-43c1-a259-c1aa7a742c02",
-      "name": "Postgres PGVector Store",
+      "id": "e4b57f14-0665-407c-b6a8-a586a97cbeb8",
+      "name": "Postgres Chat Memory",
       "credentials": {
         "postgres": {
-          "id": "ztwBBKtdmqJAMOfa",
+          "id": "0lNa5njGWb8wLXvC",
           "name": "Postgres account"
         }
       }
     },
     {
       "parameters": {
-        "model": "llama3.2:latest"
+        "mode": "retrieve-as-tool",
+        "toolDescription": "types of funnels to search in",
+        "tableName": "funnel_types",
+        "topK": 3,
+        "options": {}
       },
-      "type": "@n8n/n8n-nodes-langchain.embeddingsOllama",
-      "typeVersion": 1,
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePGVector",
+      "typeVersion": 1.3,
       "position": [
-        576,
-        288
+        432,
+        192
       ],
-      "id": "78e5c2a6-f002-4d9c-848c-9f4514b6ea51",
-      "name": "Embeddings Ollama",
+      "id": "4fd88a44-122f-452a-aecf-581396dc0bde",
+      "name": "Postgres PGVector Store",
       "credentials": {
-        "ollamaApi": {
-          "id": "MbCHS8Q4H07Gukzb",
-          "name": "Ollama account"
+        "postgres": {
+          "id": "0lNa5njGWb8wLXvC",
+          "name": "Postgres account"
         }
       }
     },
@@ -84,20 +99,136 @@
       "parameters": {
         "options": {}
       },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
-      "typeVersion": 1,
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
       "position": [
-        224,
-        128
+        608,
+        320
       ],
-      "id": "6d593a78-a6e5-41d7-9c57-99d3e46e6741",
-      "name": "Ollama Chat Model",
+      "id": "4bbb10f4-c274-4e31-8ad6-ca288e1dc849",
+      "name": "Embeddings OpenAI",
       "credentials": {
-        "ollamaApi": {
-          "id": "MbCHS8Q4H07Gukzb",
-          "name": "Ollama account"
+        "openAiApi": {
+          "id": "mrmnOe1SW7Qiuamb",
+          "name": "OpenAi account"
         }
       }
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "tableName": "funnel_types",
+        "embeddingBatchSize": 1,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePGVector",
+      "typeVersion": 1.3,
+      "position": [
+        1504,
+        -80
+      ],
+      "id": "cce95140-64f0-4a08-ad00-b18da17543ad",
+      "name": "Postgres PGVector Store1",
+      "credentials": {
+        "postgres": {
+          "id": "0lNa5njGWb8wLXvC",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonMode": "expressionData",
+        "jsonData": "={{ $json.funnel_types.funnel_data.info.description }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1.1,
+      "position": [
+        1632,
+        112
+      ],
+      "id": "fc357dc3-b419-4d1d-acd0-d64630391120",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "formTitle": "Загрузите информацию о типах воронок",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "funnel_types",
+              "fieldType": "file",
+              "acceptFileTypes": "json",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        864,
+        -80
+      ],
+      "id": "42b687f3-5cf0-4190-b05f-ffeef46fc0c6",
+      "name": "On form submission",
+      "webhookId": "e3f46c94-25b9-48b0-ad9e-d059e3bae34e"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "funnel_types",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1168,
+        -80
+      ],
+      "id": "63ddd972-6c38-477c-8581-813385533851",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "operation": "fromJson",
+        "binaryPropertyName": "funnel_types",
+        "destinationKey": "funnel_types",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1008,
+        -80
+      ],
+      "id": "1195cf03-1325-42c2-ba53-871e4980554d",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e045c0b7-219d-48ce-8523-18848f8bf3f0",
+              "name": "funnel_types.funnel_data.info.description",
+              "value": "={{ $json.funnel_types.funnel_data.type }}:\n{{ $json.funnel_types.funnel_data.info.description }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1344,
+        -80
+      ],
+      "id": "7e26f9c3-07ce-494b-b8bc-d42435857758",
+      "name": "Edit Fields"
     }
   ],
   "connections": {
@@ -112,12 +243,18 @@
         ]
       ]
     },
-    "AI Agent": {
-      "main": [
-        []
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
       ]
     },
-    "Simple Memory": {
+    "Postgres Chat Memory": {
       "ai_memory": [
         [
           {
@@ -139,23 +276,72 @@
         ]
       ]
     },
-    "Embeddings Ollama": {
+    "Embeddings OpenAI": {
       "ai_embedding": [
         [
           {
             "node": "Postgres PGVector Store",
             "type": "ai_embedding",
             "index": 0
+          },
+          {
+            "node": "Postgres PGVector Store1",
+            "type": "ai_embedding",
+            "index": 0
           }
         ]
       ]
     },
-    "Ollama Chat Model": {
-      "ai_languageModel": [
+    "Default Data Loader": {
+      "ai_document": [
         [
           {
-            "node": "AI Agent",
-            "type": "ai_languageModel",
+            "node": "Postgres PGVector Store1",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Postgres PGVector Store1",
+            "type": "main",
             "index": 0
           }
         ]
@@ -165,6 +351,6 @@
   "pinData": {},
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "3006a5d6772217f5ebf10e103499012896c18b16962721572449c979edef3060"
+    "instanceId": "d19e1b26c0b8d95659d042a7491aa0358608320cfa3f09b4a3a78387d58037a3"
   }
 }

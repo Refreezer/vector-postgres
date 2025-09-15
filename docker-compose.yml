@@ -5,33 +5,46 @@ services:
     restart: always
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: n8n
       POSTGRES_INITDB_ARGS: "--data-checksums"
-      POSTGRES_HOST_AUTH_METHOD: "trust"
-      PGSSLMODE: "allow"
+      # POSTGRES_HOST_AUTH_METHOD: "scram-sha-256"
+      # PGSSLMODE: "require"
+      # Слушаем только локально
       POSTGRES_LISTEN_ADDRESSES: "*"
-    ports:
-      - "5432:5432"
+    # ports:
+    #   - "5432:5432"
+    expose:
+      - 5432
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./init-vector-db.sql:/docker-entrypoint-initdb.d/init-vector-db.sql
+      # - ./postgresql.conf:/etc/postgresql/postgresql.conf
+    # command: postgres -c config_file=/etc/postgresql/postgresql.conf
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
       timeout: 5s
       retries: 5
     networks:
-      - postgres-network
-      - default
+      - internal-network
+    # Ограничиваем ресурсы
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
 
   pgadmin:
     image: dpage/pgadmin4:latest
     container_name: funnel-pgadmin
     restart: always
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@example.com
-      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
+      PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION: "True"
+      PGADMIN_CONFIG_LOGIN_BANNER: '"Authorized access only!"'
+      PGADMIN_CONFIG_CONSOLE_LOG_LEVEL: 10
     ports:
       - "5050:80"
     volumes:
@@ -39,7 +52,7 @@ services:
     depends_on:
       - postgres
     networks:
-      - postgres-network
+      - internal-network
 
   n8n:
     image: n8nio/n8n:latest
@@ -50,7 +63,6 @@ services:
       - N8N_PROTOCOL=https
       - N8N_HOST=vps-af079087.vps.ovh.net
       - N8N_SECURE_COOKIE=true
-      # - N8N_SECURE_COOKIE=false
       - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
       - N8N_EDITOR_BASE_URL=https://vps-af079087.vps.ovh.net/n8n/
       - N8N_PATH=/n8n/
@@ -61,12 +73,19 @@ services:
       - DB_POSTGRESDB_PORT=5432
       - DB_POSTGRESDB_DATABASE=n8n
       - DB_POSTGRESDB_USER=postgres
-      - DB_POSTGRESDB_PASSWORD=postgres
-        - N8N_ENCRYPTION_KEY=your-secret-encryption-key-change-this
+      - DB_POSTGRESDB_PASSWORD=${POSTGRES_PASSWORD}
+      # openssl rand -hex 32
+      - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=${N8N_BASIC_AUTH_USER}
+      - N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD}
+      - N8N_METRICS=false
+      - N8N_DIAGNOSTICS_ENABLED=false
       # Ollama connection variables
-      - OLLAMA_HOST=vector-ollama
+      - OLLAMA_HOST=ollama
       - OLLAMA_PORT=11434
-      - OLLAMA_API_URL=http://vector-ollama:11434
+      - OLLAMA_API_URL=http://ollama:11434
+    # Открываем порт на хосте для доступа через nginx
     ports:
       - "5678:5678"
     volumes:
@@ -74,7 +93,9 @@ services:
     depends_on:
       - postgres
     networks:
-      - postgres-network
+      - internal-network
+    # Запускаем от non-root пользователя
+    user: "1000:1000"
 
   ollama:
     build:
@@ -82,35 +103,43 @@ services:
       dockerfile: Dockerfile.ollama
     container_name: funnel-ollama
     restart: always
-    ports:
-      - "11434:11434"
+    # Не открываем порт наружу
+    expose:
+      - "11434"
     volumes:
       - ollama_data:/root/.ollama
     environment:
       - OLLAMA_HOST=0.0.0.0
+      # Ограничиваем модели
+      - OLLAMA_MODELS_PATH=/root/.ollama/models
+      - OLLAMA_KEEP_ALIVE=5m
     networks:
-      - postgres-network
+      - internal-network
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:11434/api/version"]
       interval: 30s
       timeout: 20s
       retries: 5
       start_period: 60s
-    # deploy:
-    #   resources:
-    #     reservations:
-    #       devices:
-    #         - driver: nvidia
-    #           count: all
-    #           capabilities: [gpu]
-    # # For CPU-only, comment out the deploy section above
+    # Ограничиваем ресурсы
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 8G
 
 volumes:
   postgres_data:
+    driver: local
   pgadmin_data:
+    driver: local
   n8n_data:
+    driver: local
   ollama_data:
+    driver: local
+  nginx_logs:
+    driver: local
 
 networks:
-  postgres-network:
+  internal-network:
     driver: bridge
