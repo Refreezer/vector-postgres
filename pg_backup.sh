@@ -53,8 +53,8 @@ BACKUP_DIR="/home/debian/postgres_backups"
 POSTGRES_USER="postgres"
 POSTGRES_PASSWORD=$(grep POSTGRES_PASSWORD .env | cut -d= -f2)
 POSTGRES_CONTAINER="funnel-postgres"
-DATABASES=("n8n" "postgres")
-MAX_BACKUPS=3
+DATABASES=("n8n" "postgres" "funnels")
+MAX_BACKUPS=12
 
 # Create backup directory if it doesn't exist
 mkdir -p "$BACKUP_DIR"
