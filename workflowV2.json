@@ -12,7 +12,7 @@
       "typeVersion": 1.3,
       "position": [
         2512,
-        592
+        560
       ],
       "id": "4081e630-b9ff-4ed5-b006-839724ba2739",
       "name": "Postgres PGVector Store",
@@ -31,7 +31,7 @@
       "typeVersion": 1.2,
       "position": [
         -288,
-        1392
+        1408
       ],
       "id": "40f727d0-5ea0-4c1e-8553-d4f36b55187a",
       "name": "Embeddings OpenAI",
@@ -53,7 +53,7 @@
       "typeVersion": 1.3,
       "position": [
         -288,
-        1168
+        1184
       ],
       "id": "1df68b7d-ad85-485c-a57f-9cc0414bfe03",
       "name": "Postgres PGVector Store1",
@@ -74,7 +74,7 @@
       "typeVersion": 1.1,
       "position": [
         -160,
-        1392
+        1408
       ],
       "id": "6d6468d1-aad4-4a60-bdbc-aacf9494dd8f",
       "name": "Default Data Loader"
@@ -89,7 +89,7 @@
       "typeVersion": 1,
       "position": [
         -736,
-        1168
+        1184
       ],
       "id": "befc27d7-8e37-4fba-a265-16de3c8bc1e5",
       "name": "Split Out"
@@ -105,7 +105,7 @@
       "typeVersion": 1,
       "position": [
         -960,
-        1168
+        1184
       ],
       "id": "c16efd04-8461-4538-9be3-4bc9825d749d",
       "name": "Extract from File"
@@ -128,7 +128,7 @@
       "typeVersion": 3.4,
       "position": [
         -512,
-        1168
+        1184
       ],
       "id": "4efeb94b-e99a-49a9-9ae2-c0cb38b40022",
       "name": "Edit Fields"
@@ -184,7 +184,7 @@
       "typeVersion": 2.6,
       "position": [
         -64,
-        544
+        560
       ],
       "id": "016e0281-b6ab-4643-af85-d17e3913e318",
       "name": "TG_CHAT_FUNNELS_BRIEF_FORM_REQUESTED",
@@ -207,7 +207,7 @@
       "typeVersion": 1.2,
       "position": [
         -1184,
-        112
+        128
       ],
       "id": "1ff536d3-570c-4d02-86eb-98acbdd86c42",
       "name": "TG_MESSAGE_RECEIVED",
@@ -254,7 +254,7 @@
       "typeVersion": 1.2,
       "position": [
         496,
-        1008
+        1024
       ],
       "id": "dc6d0ca7-46bb-49ba-8b77-7152ec7ad7b1",
       "name": "OpenAI Chat Model1",
@@ -268,14 +268,14 @@
     {
       "parameters": {
         "schemaType": "manual",
-        "inputSchema": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"title\": \"Survey Result Schema\",\n  \"type\": \"object\",\n  \"required\": [\n    \"survey_interation\",\n    \"questions_to_ask\",\n    \"result\"\n  ],\n  \"properties\": {\n    \"survey_interation\": {\n      \"type\": \"integer\",\n      \"description\": \"The iteration number of the survey.\"\n    },\n    \"questions_to_ask\": {\n      \"type\": \"array\",\n      \"description\": \"A list of questions to ask the user again due to previous invalid answers.\",\n      \"items\": {\n        \"type\": \"object\",\n        \"required\": [\n          \"text\",\n          \"previous_answer\"\n        ],\n        \"properties\": {\n          \"text\": {\n            \"type\": \"string\",\n            \"description\": \"The follow-up question text.\"\n          },\n          \"previous_answer\": {\n            \"type\": \"string\",\n            \"description\": \"The user's previous, unsatisfactory answer.\"\n          }\n        }\n      }\n    },\n    \"result\": {\n      \"type\": \"object\",\n      \"required\": [\n        \"is_survey_passed\",\n        \"answers\"\n      ],\n      \"properties\": {\n        \"is_survey_passed\": {\n          \"type\": \"boolean\",\n          \"description\": \"Indicates if the survey was successfully passed.\"\n        },\n        \"answers\": {\n          \"type\": \"object\",\n          \"required\": [\n            \"brief_content\"\n          ],\n          \"properties\": {\n            \"brief_content\": {\n              \"type\": \"object\",\n              \"required\": [\n                \"cost\",\n                \"niche\",\n                \"chat_id\",\n                \"product\",\n                \"audience\",\n                \"target_channels\",\n                \"competitors_urls\",\n                \"marketing_budget\"\n              ],\n              \"properties\": {\n                \"cost\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                    \"value\": { \"type\": \"string\" },\n                    \"description\": { \"type\": \"string\" },\n                    \"question\": { \"type\": \"string\" }\n                  },\n                  \"required\": [\"value\", \"description\", \"question\"]\n                },\n                \"niche\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                    \"value\": { \"type\": \"string\" },\n                    \"description\": { \"type\": \"string\" },\n                    \"question\": { \"type\": \"string\" }\n                  },\n                  \"required\": [\"value\", \"description\", \"question\"]\n                },\n                \"chat_id\": {\n                  \"type\": \"string\"\n                },\n                \"product\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                    \"value\": { \"type\": \"string\" },\n                    \"description\": { \"type\": \"string\" },\n                    \"question\": { \"type\": \"string\" }\n                  },\n                  \"required\": [\"value\", \"description\", \"question\"]\n                },\n                \"audience\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                    \"value\": { \"type\": \"string\" },\n                    \"description\": { \"type\": \"string\" },\n                    \"question\": { \"type\": \"string\" }\n                  },\n                  \"required\": [\"value\", \"description\", \"question\"]\n                },\n                \"target_channels\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                    \"value\": { \"type\": \"string\" },\n                    \"description\": { \"type\": \"string\" },\n                    \"question\": { \"type\": \"string\" }\n                  },\n                  \"required\": [\"value\", \"description\", \"question\"]\n                },\n                \"competitors_urls\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                    \"value\": { \"type\": \"string\" },\n                    \"description\": { \"type\": \"string\" },\n                    \"question\": { \"type\": \"string\" }\n                  },\n                  \"required\": [\"value\", \"description\", \"question\"]\n                },\n                \"marketing_budget\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                    \"value\": { \"type\": \"string\" },\n                    \"description\": { \"type\": \"string\" },\n                    \"question\": { \"type\": \"string\" }\n                  },\n                  \"required\": [\"value\", \"description\", \"question\"]\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n",
+        "inputSchema": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"title\": \"Survey Result Schema\",\n  \"type\": \"object\",\n  \"required\": [\n    \"survey_interation\",\n    \"questions_to_ask\",\n    \"result\",\n    \"chat_id\"\n  ],\n  \"properties\": {\n    \"chat_id\": {\n      \"type\": \"string\",\n      \"description\": \"поле которые надо достать из ввода\"\n    },\n    \"survey_interation\": {\n      \"type\": \"integer\",\n      \"description\": \"The iteration number of the survey.\"\n    },\n    \"questions_to_ask\": {\n      \"type\": \"array\",\n      \"description\": \"A list of questions to ask the user again due to previous invalid answers.\",\n      \"items\": {\n        \"type\": \"object\",\n        \"required\": [\n          \"text\",\n          \"previous_answer\"\n        ],\n        \"properties\": {\n          \"text\": {\n            \"type\": \"string\",\n            \"description\": \"The follow-up question text.\"\n          },\n          \"previous_answer\": {\n            \"type\": \"string\",\n            \"description\": \"The user's previous, unsatisfactory answer.\"\n          }\n        }\n      }\n    },\n    \"result\": {\n      \"type\": \"object\",\n      \"required\": [\n        \"is_survey_passed\",\n        \"answers\"\n      ],\n      \"properties\": {\n        \"is_survey_passed\": {\n          \"type\": \"boolean\",\n          \"description\": \"Indicates if the survey was successfully passed.\"\n        },\n        \"answers\": {\n          \"type\": \"object\",\n          \"required\": [\n            \"brief_content\"\n          ],\n          \"properties\": {\n            \"brief_content\": {\n              \"type\": \"object\",\n              \"required\": [\n                \"cost\",\n                \"niche\",\n                \"chat_id\",\n                \"product\",\n                \"audience\",\n                \"target_channels\",\n                \"competitors_urls\",\n                \"marketing_budget\"\n              ],\n              \"properties\": {\n                \"cost\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                    \"value\": { \"type\": \"string\" },\n                    \"description\": { \"type\": \"string\" },\n                    \"question\": { \"type\": \"string\" }\n                  },\n                  \"required\": [\"value\", \"description\", \"question\"]\n                },\n                \"niche\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                    \"value\": { \"type\": \"string\" },\n                    \"description\": { \"type\": \"string\" },\n                    \"question\": { \"type\": \"string\" }\n                  },\n                  \"required\": [\"value\", \"description\", \"question\"]\n                },\n                \"chat_id\": {\n                  \"type\": \"string\"\n                },\n                \"product\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                    \"value\": { \"type\": \"string\" },\n                    \"description\": { \"type\": \"string\" },\n                    \"question\": { \"type\": \"string\" }\n                  },\n                  \"required\": [\"value\", \"description\", \"question\"]\n                },\n                \"audience\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                    \"value\": { \"type\": \"string\" },\n                    \"description\": { \"type\": \"string\" },\n                    \"question\": { \"type\": \"string\" }\n                  },\n                  \"required\": [\"value\", \"description\", \"question\"]\n                },\n                \"target_channels\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                    \"value\": { \"type\": \"string\" },\n                    \"description\": { \"type\": \"string\" },\n                    \"question\": { \"type\": \"string\" }\n                  },\n                  \"required\": [\"value\", \"description\", \"question\"]\n                },\n                \"competitors_urls\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                    \"value\": { \"type\": \"string\" },\n                    \"description\": { \"type\": \"string\" },\n                    \"question\": { \"type\": \"string\" }\n                  },\n                  \"required\": [\"value\", \"description\", \"question\"]\n                },\n                \"marketing_budget\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                    \"value\": { \"type\": \"string\" },\n                    \"description\": { \"type\": \"string\" },\n                    \"question\": { \"type\": \"string\" }\n                  },\n                  \"required\": [\"value\", \"description\", \"question\"]\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n",
         "autoFix": true
       },
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
       "position": [
         416,
-        800
+        816
       ],
       "id": "2b84a8db-779a-4d69-b936-d79cd14fd7d7",
       "name": "Structured Output Parser"
@@ -367,7 +367,7 @@
       "typeVersion": 3.2,
       "position": [
         -288,
-        32
+        0
       ],
       "id": "32785656-3c18-4400-9c15-88dda390ab87",
       "name": "Survey switch"
@@ -384,7 +384,7 @@
       "typeVersion": 2.2,
       "position": [
         2320,
-        368
+        336
       ],
       "id": "78a366ad-6742-4a96-9bed-829698e02567",
       "name": "Подбор воронки"
@@ -397,7 +397,7 @@
       "typeVersion": 1.2,
       "position": [
         2592,
-        800
+        768
       ],
       "id": "c3307e6a-674b-48c5-8160-a9084367a674",
       "name": "Embeddings OpenAI1",
@@ -420,7 +420,7 @@
       "typeVersion": 1.2,
       "position": [
         3104,
-        368
+        336
       ],
       "id": "44cf9b92-6b65-4244-b855-7cd3311c7b3d",
       "name": "Send a text message",
@@ -461,7 +461,7 @@
       "typeVersion": 2.2,
       "position": [
         784,
-        576
+        592
       ],
       "id": "deba5f97-02df-4429-b12b-a3c76a0043aa",
       "name": "If survey ready"
@@ -506,7 +506,7 @@
       "typeVersion": 3.2,
       "position": [
         -512,
-        208
+        224
       ],
       "id": "17c02ce0-c91a-4380-8d53-d9ba8d2b8604",
       "name": "brief switch"
@@ -523,7 +523,7 @@
       "typeVersion": 1.2,
       "position": [
         1584,
-        432
+        400
       ],
       "id": "f8072685-0429-4c27-a08b-645631b29d8b",
       "name": "Survey ok message",
@@ -547,7 +547,7 @@
       "typeVersion": 1.2,
       "position": [
         1360,
-        736
+        656
       ],
       "id": "d39f7def-e209-4608-b226-8c7a9ae0bd50",
       "name": "Запрос survey",
@@ -572,7 +572,7 @@
       "typeVersion": 2.2,
       "position": [
         224,
-        576
+        592
       ],
       "id": "ffd54c3b-6425-4f17-bec0-d896cb94a203",
       "name": "Brief clarification",
@@ -588,7 +588,7 @@
       "typeVersion": 2.6,
       "position": [
         1360,
-        432
+        400
       ],
       "id": "e659fc80-db9d-45ae-b4f3-c3d95e81b342",
       "name": "TG_CHAT_FUNNELS_ADDITIONAL_SURVEY_COMPLETED",
@@ -603,14 +603,14 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "INSERT INTO public.session_state (chat_id, events)\nVALUES (\n    {{ $json.result.chat.id }},\n  ('[ { \"event_type\": \"TG_CHAT_FUNNELS_ADDITIONAL_SURVEY_REQUESTED\", \"payload\": { \"survey_state\":' || '{{ JSON.stringify($('Brief clarification').item.json.output)  }}' || ' } } ]')::jsonb\n)\nON CONFLICT (chat_id) DO UPDATE\nSET events = session_state.events || EXCLUDED.events,\n    updated_at = CURRENT_TIMESTAMP\n;\n",
+        "query": "INSERT INTO public.session_state (chat_id, events)\nVALUES (\n    {{ $json.chat_id }},\n     $json_payload$\n    {{\n      JSON.stringify($json)\n    }}\n    $json_payload$::jsonb\n)\nON CONFLICT (chat_id) DO UPDATE\nSET events = session_state.events || EXCLUDED.events,\n    updated_at = CURRENT_TIMESTAMP\n;\n",
         "options": {}
       },
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
         1584,
-        736
+        848
       ],
       "id": "4db96be4-3420-48bf-bd51-01643d066395",
       "name": "TG_CHAT_FUNNELS_ADDITIONAL_SURVEY_REQUESTED",
@@ -797,7 +797,7 @@
       "typeVersion": 2,
       "position": [
         -64,
-        336
+        352
       ],
       "id": "8e3046d3-9ba4-4055-9f06-fee16bcb9790",
       "name": "EXTRACT briefs and surveys"
@@ -812,7 +812,7 @@
       "typeVersion": 2.6,
       "position": [
         -736,
-        208
+        224
       ],
       "id": "2727798d-f870-40bf-a669-a40e00c6d66d",
       "name": "TG_CHAT_MESSAGE_RECEIVED",
@@ -864,7 +864,7 @@
       "typeVersion": 3.2,
       "position": [
         -960,
-        112
+        128
       ],
       "id": "7b75931e-c476-4abe-a18c-6606f7c9f385",
       "name": "Command Switch"
@@ -879,7 +879,7 @@
       "typeVersion": 2.6,
       "position": [
         -736,
-        16
+        32
       ],
       "id": "562c697b-5340-460f-88f3-02b8920dd91c",
       "name": "RESET CHAT",
@@ -910,7 +910,7 @@
       "typeVersion": 2.3,
       "position": [
         -1184,
-        1168
+        1184
       ],
       "id": "003c074a-dddc-4d3e-bd9c-05af4b19b6ba",
       "name": "On form submission2",
@@ -925,7 +925,7 @@
       "typeVersion": 2,
       "position": [
         1072,
-        432
+        400
       ],
       "id": "76c29068-e613-456d-95c1-a28c763c23dc",
       "name": "Build survey state"
@@ -969,7 +969,7 @@
       "typeVersion": 1,
       "position": [
         2032,
-        128
+        96
       ],
       "id": "062b2e44-2eaa-41ba-bf43-99b4bbbc5040",
       "name": "Aggregate"
@@ -983,7 +983,7 @@
       "typeVersion": 1.3,
       "position": [
         2384,
-        592
+        560
       ],
       "id": "eeabd23a-f621-4aae-8c4f-0c9ea371b874",
       "name": "Postgres Chat Memory",
@@ -1003,7 +1003,7 @@
       "typeVersion": 1.3,
       "position": [
         288,
-        800
+        816
       ],
       "id": "3d62c3c6-5d0d-4d12-9e82-e5f890940224",
       "name": "Postgres Chat Memory1",
@@ -1105,7 +1105,7 @@
       "typeVersion": 2.6,
       "position": [
         2880,
-        368
+        336
       ],
       "id": "52afeb91-9d9a-42da-9de1-11afbd34360b",
       "name": "FUNNEL_SELECTED",
@@ -1127,7 +1127,7 @@
       "typeVersion": 2.6,
       "position": [
         1808,
-        432
+        400
       ],
       "id": "ab33ef46-69d4-42b8-95f0-311dbed5696a",
       "name": "GET BRIEF EVENTS1",
@@ -1153,7 +1153,7 @@
       "typeVersion": 1.2,
       "position": [
         160,
-        800
+        816
       ],
       "id": "33f264e5-32a9-43a4-931d-d52289b449be",
       "name": "OpenAI Chat Model2",
@@ -1178,7 +1178,7 @@
       "typeVersion": 1.2,
       "position": [
         2256,
-        592
+        560
       ],
       "id": "8b6d70c2-1c8f-49df-89ed-eea4fb2ac0d9",
       "name": "OpenAI Chat Model3",
@@ -1203,7 +1203,7 @@
       "typeVersion": 1.2,
       "position": [
         1088,
-        960
+        976
       ],
       "id": "4fc53639-46a1-46b5-84ca-206eddee5a3a",
       "name": "OpenAI Chat Model",
@@ -1250,7 +1250,7 @@
       "typeVersion": 1.2,
       "position": [
         -512,
-        16
+        32
       ],
       "id": "153236ca-48fe-4c77-a851-0da15c0551b0",
       "name": "Send a text message2",
@@ -1288,7 +1288,7 @@
       "typeVersion": 2.2,
       "position": [
         1008,
-        736
+        752
       ],
       "id": "3302c0e4-e7d6-47dd-8511-83146e5ffcd0",
       "name": "JSON результат Опросника в человеческие вопросы"
@@ -1329,7 +1329,7 @@
       "typeVersion": 1.2,
       "position": [
         2464,
-        -48
+        -80
       ],
       "id": "cad62cb8-3365-4717-871f-b5307cfb363d",
       "name": "Thinking of funnel",
@@ -1340,6 +1340,20 @@
           "name": "Yarik Bot"
         }
       }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Получаем ваш объект с результатами опроса\n\n// Формируем финальную структуру, как JavaScript объект\n\n// Превращаем весь объект в JSON-строку\nreturn {\n    \"chat_id\": $('If survey ready').first().json.output.chat_id,\n    \"event_type\": \"TG_CHAT_FUNNELS_ADDITIONAL_SURVEY_REQUESTED\",\n    \"payload\": {\n        \"survey_state\": $input.item.json.output\n    }\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1360,
+        832
+      ],
+      "id": "dbc6f62d-5cbb-41a6-ba5a-4fcb5aab0a4d",
+      "name": "Build survey requested event"
     }
   ],
   "connections": {
@@ -1578,13 +1592,7 @@
     },
     "Запрос survey": {
       "main": [
-        [
-          {
-            "node": "TG_CHAT_FUNNELS_ADDITIONAL_SURVEY_REQUESTED",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Brief clarification": {
@@ -1828,6 +1836,11 @@
       "main": [
         [
           {
+            "node": "Build survey requested event",
+            "type": "main",
+            "index": 0
+          },
+          {
             "node": "Запрос survey",
             "type": "main",
             "index": 0
@@ -1839,211 +1852,21 @@
       "main": [
         []
       ]
+    },
+    "Build survey requested event": {
+      "main": [
+        [
+          {
+            "node": "TG_CHAT_FUNNELS_ADDITIONAL_SURVEY_REQUESTED",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "pinData": {
-    "TG_MESSAGE_RECEIVED": [
-      {
-        "update_id": 237444611,
-        "message": {
-          "message_id": 206,
-          "from": {
-            "id": 212935169,
-            "is_bot": false,
-            "first_name": "Iaroslav",
-            "username": "verse537",
-            "language_code": "ru",
-            "is_premium": true
-          },
-          "chat": {
-            "id": 212935169,
-            "first_name": "Iaroslav",
-            "username": "verse537",
-            "type": "private"
-          },
-          "date": 1758212408,
-          "text": "Конечно, вот заполненный бриф на основе гипотетического проекта в сфере разработки игр, который может соответствовать вашим интересам.\n\n***\n\nЗдравствуйте! Благодарю за вопросы. Предоставляю подробную информацию о нашем проекте для разработки маркетинговой стратегии.\n\n1.  Стоимость продукта: Мы работаем по модели подписки (SaaS). У нас три основных тарифа:\n    *   Indie: $49/месяц. Включает 1 проект, до 10,000 активных пользователей в месяц (MAU), базовую аналитику производительности и отчеты по сбоям.\n    *   Studio: $249/месяц. Включает до 5 проектов, до 100,000 MAU, расширенную аналитику, интеграцию с Jira и Slack, анализ ассетов.\n    *   Enterprise: от $999/месяц (индивидуальный расчет). Включает неограниченное количество проектов и MAU, выделенного менеджера, кастомные интеграции и доступ к API.\n\n2.  Ниша проекта: Наша ниша — это инструменты для оптимизации и мониторинга производительности мобильных игр на движке Unity. Мы помогаем разработчикам выявлять и устранять \"узкие места\" в производительности, снижать количество сбоев и уменьшать размер билда игры, что напрямую влияет на удержание пользователей и доход.\n\n3.  Описание продукта: Наш продукт — это SaaS-платформа \"PerfOptimizator\". Она интегрируется в игровой проект на Unity через легкий SDK. Платформа в реальном времени собирает данные о производительности (FPS, использование памяти, нагрузка на CPU/GPU) с устройств конечных пользователей.\n    *   Ключевые функции:\n        *   Real-time Performance Monitoring: Дашборды с метриками производительности в разрезе устройств, версий ОС и билдов.\n        *   Crash Reporting: Автоматический сбор и группировка отчетов о сбоях с подробными стектрейсами.\n        *   Asset Analysis: Инструмент, который анализирует ассеты проекта и дает рекомендации по их оптимизации (например, сжатие текстур, оптимизация моделей).\n        *   Build Size Tracker: Отслеживание размера игрового билда и его компонентов для контроля над его ростом.\n\n4.  Целевая аудитория (ЦА):\n    *   Первичная ЦА: Инди-разработчики и небольшие студии (2-15 человек), которые создают мобильные игры на Unity. У них ограниченные ресурсы для ручного тестирования производительности на широком парке устройств.\n    *   Вторичная ЦА: Технические лиды (Technical Leads) и инженеры по производительности (Performance Engineers) в средних и крупных игровых студиях, которые ищут специализированное решение для глубокого анализа и автоматизации мониторинга.\n\n5.  Конкуренты:\n    *   Unity Performance Monitoring (UPM): Прямой конкурент от самого Unity. Наше преимущество: более глубокий анализ и более гибкие тарифы для инди. Ссылка: https://unity.com/solutions/performance-reporting\n    *   GameAnalytics: Предоставляют бесплатную базовую аналитику, включая некоторые метрики производительности. Наше преимущество: фокус именно на глубокой технической оптимизации, а не на продуктовых метриках. Ссылка: https://gameanalytics.com/\n    *   Sentry / Bugsnag: Специализируются на отчетах об ошибках, но их инструментарий для игровой производительности ограничен. Наше преимущество: комплексное решение \"все в одном\" для производительности игр. Ссылка: https://sentry.io/for/gaming/\n\n6.  Опыт проведения вебинаров: Мы провели 2 вебинара для русскоязычной аудитории на тему \"Как найти и исправить просадки FPS в мобильной игре на Unity\".\n    *   Результаты: Суммарно было около 350 регистраций и 150 участников онлайн.\n    *   Конверсия: В регистрацию на триал конвертировалось около 5% участников. Конверсия в платящего клиента после триала составила ~10% от зарегистрировавшихся. Результат считаем скромным, воронку нужно дорабатывать.\n\n7.  Маркетинговый бюджет: Мы готовы выделить $15,000 на первые 3 месяца ($5,000/месяц). Бюджет гибкий и может быть увеличен при достижении целевых показателей CAC (Customer Acquisition Cost).",
-          "entities": [
-            {
-              "offset": 272,
-              "length": 19,
-              "type": "bold"
-            },
-            {
-              "offset": 366,
-              "length": 6,
-              "type": "bold"
-            },
-            {
-              "offset": 515,
-              "length": 7,
-              "type": "bold"
-            },
-            {
-              "offset": 649,
-              "length": 11,
-              "type": "bold"
-            },
-            {
-              "offset": 816,
-              "length": 13,
-              "type": "bold"
-            },
-            {
-              "offset": 846,
-              "length": 90,
-              "type": "bold"
-            },
-            {
-              "offset": 1138,
-              "length": 18,
-              "type": "bold"
-            },
-            {
-              "offset": 1190,
-              "length": 17,
-              "type": "bold"
-            },
-            {
-              "offset": 1430,
-              "length": 17,
-              "type": "bold"
-            },
-            {
-              "offset": 1460,
-              "length": 33,
-              "type": "bold"
-            },
-            {
-              "offset": 1587,
-              "length": 16,
-              "type": "bold"
-            },
-            {
-              "offset": 1693,
-              "length": 15,
-              "type": "bold"
-            },
-            {
-              "offset": 1855,
-              "length": 19,
-              "type": "bold"
-            },
-            {
-              "offset": 1963,
-              "length": 23,
-              "type": "bold"
-            },
-            {
-              "offset": 1995,
-              "length": 13,
-              "type": "bold"
-            },
-            {
-              "offset": 2009,
-              "length": 51,
-              "type": "bold"
-            },
-            {
-              "offset": 2210,
-              "length": 13,
-              "type": "bold"
-            },
-            {
-              "offset": 2224,
-              "length": 91,
-              "type": "bold"
-            },
-            {
-              "offset": 2449,
-              "length": 11,
-              "type": "bold"
-            },
-            {
-              "offset": 2469,
-              "length": 35,
-              "type": "bold"
-            },
-            {
-              "offset": 2620,
-              "length": 49,
-              "type": "code"
-            },
-            {
-              "offset": 2678,
-              "length": 14,
-              "type": "bold"
-            },
-            {
-              "offset": 2890,
-              "length": 26,
-              "type": "code"
-            },
-            {
-              "offset": 2925,
-              "length": 17,
-              "type": "bold"
-            },
-            {
-              "offset": 3135,
-              "length": 29,
-              "type": "code"
-            },
-            {
-              "offset": 3170,
-              "length": 26,
-              "type": "bold"
-            },
-            {
-              "offset": 3327,
-              "length": 11,
-              "type": "bold"
-            },
-            {
-              "offset": 3408,
-              "length": 10,
-              "type": "bold"
-            },
-            {
-              "offset": 3624,
-              "length": 21,
-              "type": "bold"
-            },
-            {
-              "offset": 3665,
-              "length": 26,
-              "type": "bold"
-            }
-          ]
-        }
-      }
-    ],
-    "Brief Form": [
-      {
-        "В какой нише ваш проект?": "йцуа",
-        "Какой у вас продукт?": "йцуа",
-        "Стоимость продукта": "йцуа",
-        "Опишите целевую аудиторию": "йцуа",
-        "Скиньте ссылки на конкурентов": "йцуа",
-        "Какие результаты окупаемости воронки для вас будут оптимальны?": [
-          "ROAS не менее 100%"
-        ],
-        "Какой у вас бюджет на рекламу?": "йцуа",
-        "В каких каналах планируете трафик?": "йцуа",
-        "Какие воронки уже тестировали?": "йцуа",
-        "Был ли опыт проведения онлайн-вебинаров?": "йцуа",
-        "Дополнительные комментарии": "йцуа",
-        "chat_id": "212935169",
-        "submittedAt": "2025-09-18T11:54:59.091-04:00",
-        "formMode": "production",
-        "formQueryParameters": {
-          "chat_id": "212935169"
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "meta": {
-    "templateCredsSetupCompleted": true,
     "instanceId": "d19e1b26c0b8d95659d042a7491aa0358608320cfa3f09b4a3a78387d58037a3"
   }
 }
