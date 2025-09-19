@@ -12,7 +12,7 @@
       "typeVersion": 1.3,
       "position": [
         2512,
-        560
+        1328
       ],
       "id": "4081e630-b9ff-4ed5-b006-839724ba2739",
       "name": "Postgres PGVector Store",
@@ -31,7 +31,7 @@
       "typeVersion": 1.2,
       "position": [
         -288,
-        1408
+        2160
       ],
       "id": "40f727d0-5ea0-4c1e-8553-d4f36b55187a",
       "name": "Embeddings OpenAI",
@@ -39,28 +39,6 @@
         "openAiApi": {
           "id": "mrmnOe1SW7Qiuamb",
           "name": "OpenAi account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "mode": "insert",
-        "tableName": "funnel_types",
-        "embeddingBatchSize": 1,
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.vectorStorePGVector",
-      "typeVersion": 1.3,
-      "position": [
-        -288,
-        1184
-      ],
-      "id": "1df68b7d-ad85-485c-a57f-9cc0414bfe03",
-      "name": "Postgres PGVector Store1",
-      "credentials": {
-        "postgres": {
-          "id": "0lNa5njGWb8wLXvC",
-          "name": "Postgres account"
         }
       }
     },
@@ -74,7 +52,7 @@
       "typeVersion": 1.1,
       "position": [
         -160,
-        1408
+        2160
       ],
       "id": "6d6468d1-aad4-4a60-bdbc-aacf9494dd8f",
       "name": "Default Data Loader"
@@ -89,7 +67,7 @@
       "typeVersion": 1,
       "position": [
         -736,
-        1184
+        1936
       ],
       "id": "befc27d7-8e37-4fba-a265-16de3c8bc1e5",
       "name": "Split Out"
@@ -105,7 +83,7 @@
       "typeVersion": 1,
       "position": [
         -960,
-        1184
+        1936
       ],
       "id": "c16efd04-8461-4538-9be3-4bc9825d749d",
       "name": "Extract from File"
@@ -128,7 +106,7 @@
       "typeVersion": 3.4,
       "position": [
         -512,
-        1184
+        1936
       ],
       "id": "4efeb94b-e99a-49a9-9ae2-c0cb38b40022",
       "name": "Edit Fields"
@@ -144,7 +122,7 @@
       "typeVersion": 2.3,
       "position": [
         -960,
-        656
+        1392
       ],
       "id": "d0d7e5aa-3e83-4945-8698-997ebe5a736b",
       "name": "Form",
@@ -153,7 +131,7 @@
     {
       "parameters": {
         "chatId": "={{ $json.chat_id }}",
-        "text": "=Заполните [форму](https://vps-af079087.vps.ovh.net/n8n/form/5f8eaf12-5bd2-4bae-b794-8aaf52ddd3f6?chat_id={{ $json.chat_id }}",
+        "text": "=Привет!\n\nДля того чтобы я начал разрабатывать для вас воронку продаж, заполните [форму](https://vps-af079087.vps.ovh.net/n8n/form/5f8eaf12-5bd2-4bae-b794-8aaf52ddd3f6?chat_id={{ $json.chat_id }} ",
         "additionalFields": {
           "appendAttribution": false
         }
@@ -162,7 +140,7 @@
       "typeVersion": 1.2,
       "position": [
         -288,
-        464
+        1200
       ],
       "id": "560513ee-b44c-4a9f-96c4-7f4112906a41",
       "name": "send_brief_form_link",
@@ -184,7 +162,7 @@
       "typeVersion": 2.6,
       "position": [
         -64,
-        560
+        1344
       ],
       "id": "016e0281-b6ab-4643-af85-d17e3913e318",
       "name": "TG_CHAT_FUNNELS_BRIEF_FORM_REQUESTED",
@@ -207,7 +185,7 @@
       "typeVersion": 1.2,
       "position": [
         -1184,
-        128
+        848
       ],
       "id": "1ff536d3-570c-4d02-86eb-98acbdd86c42",
       "name": "TG_MESSAGE_RECEIVED",
@@ -229,7 +207,7 @@
       "typeVersion": 2.6,
       "position": [
         -288,
-        656
+        1392
       ],
       "id": "3ec70b82-f4c2-4e73-b546-18211d29fa1b",
       "name": "TG_CHAT_FUNNELS_BRIEF_FORM_COMPLETED",
@@ -254,7 +232,7 @@
       "typeVersion": 1.2,
       "position": [
         496,
-        1024
+        1744
       ],
       "id": "dc6d0ca7-46bb-49ba-8b77-7152ec7ad7b1",
       "name": "OpenAI Chat Model1",
@@ -275,7 +253,7 @@
       "typeVersion": 1.3,
       "position": [
         416,
-        816
+        1536
       ],
       "id": "2b84a8db-779a-4d69-b936-d79cd14fd7d7",
       "name": "Structured Output Parser"
@@ -367,7 +345,7 @@
       "typeVersion": 3.2,
       "position": [
         -288,
-        0
+        768
       ],
       "id": "32785656-3c18-4400-9c15-88dda390ab87",
       "name": "Survey switch"
@@ -384,7 +362,7 @@
       "typeVersion": 2.2,
       "position": [
         2320,
-        336
+        1104
       ],
       "id": "78a366ad-6742-4a96-9bed-829698e02567",
       "name": "Подбор воронки"
@@ -397,7 +375,7 @@
       "typeVersion": 1.2,
       "position": [
         2592,
-        768
+        1536
       ],
       "id": "c3307e6a-674b-48c5-8160-a9084367a674",
       "name": "Embeddings OpenAI1",
@@ -420,7 +398,7 @@
       "typeVersion": 1.2,
       "position": [
         3104,
-        336
+        1104
       ],
       "id": "44cf9b92-6b65-4244-b855-7cd3311c7b3d",
       "name": "Send a text message",
@@ -461,7 +439,7 @@
       "typeVersion": 2.2,
       "position": [
         784,
-        592
+        1312
       ],
       "id": "deba5f97-02df-4429-b12b-a3c76a0043aa",
       "name": "If survey ready"
@@ -506,7 +484,7 @@
       "typeVersion": 3.2,
       "position": [
         -512,
-        224
+        944
       ],
       "id": "17c02ce0-c91a-4380-8d53-d9ba8d2b8604",
       "name": "brief switch"
@@ -514,7 +492,7 @@
     {
       "parameters": {
         "chatId": "={{ $('TG_CHAT_MESSAGE_RECEIVED').item.json.events[0].payload.messages[0].chat.id }}",
-        "text": "Я все понял, результат опроса сохранен. Подбираю вам подходящую воронку!",
+        "text": "=Я все понял, результат опроса сохранен.\nПодбираю вам подходящую воронку! ⌛",
         "additionalFields": {
           "appendAttribution": false
         }
@@ -523,7 +501,7 @@
       "typeVersion": 1.2,
       "position": [
         1584,
-        400
+        1024
       ],
       "id": "f8072685-0429-4c27-a08b-645631b29d8b",
       "name": "Survey ok message",
@@ -547,7 +525,7 @@
       "typeVersion": 1.2,
       "position": [
         1360,
-        656
+        1312
       ],
       "id": "d39f7def-e209-4608-b226-8c7a9ae0bd50",
       "name": "Запрос survey",
@@ -562,7 +540,7 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "=ТЫ ПОЛУЧАЕШЬ ИВЕНТЫ ЧАТА\nevent_type: TG_CHAT_FUNNELS_BRIEF_FORM_COMPLETED - означает что человек заполнил форму с вопросами\nв payload этого ивента ты найдешь первоначальные ответы на вопросы\n\nTG_CHAT_FUNNELS_ADDITIONAL_SURVEY_REQUESTED - дополнительный опрос который ты инициировал на прошлой итерации. Там есть questions_to_ask - вопросы которые ты тогда решил дозадать, result - текущий стейт опросника. Если result.is_survey_passed - опросник пройден. Если нет - требуется доп информация. Если в результате анализа ивентов пришедших тебе на вход ты считаешь, что опросник пройден полноценно, сделай result.is_survey_passed \n =true когда будешь структурировать результат\nответы пользователя всегда складывай в result.answers по json схеме указанной в output parser\n\nпредыдущие ивенты:\n{{ JSON.stringify($json.brief_and_survey_events) }}\n\nОтвет на текущей итерации опроса:\n{{ $json.current_suvrey_answer }}\n\nТебе нужно название и описание поля с текущим ответом и если ответ не относится к полю, то по нему нужно задать уточняющие вопросы.\n\nне завершай опросник пока не будешь уверен что все ответы относятся к тем вопросам/полям к которым они прилинкованы в формате json\n\nЕсли опросник не устроил, всегда указывай в questions_to_ask \n1) что не так в предыдущих ответах\n2) конкретные вопросы на которые надо доответить\n",
+        "text": "=ТЫ ПОЛУЧАЕШЬ ИВЕНТЫ ЧАТА\nevent_type: TG_CHAT_FUNNELS_BRIEF_FORM_COMPLETED - означает что человек заполнил форму с вопросами\nв payload этого ивента ты найдешь первоначальные ответы на вопросы\n\nTG_CHAT_FUNNELS_ADDITIONAL_SURVEY_REQUESTED - дополнительный опрос который ты инициировал на прошлой итерации. Там есть questions_to_ask - вопросы которые ты тогда решил дозадать, result - текущий стейт опросника. Если result.is_survey_passed - опросник пройден. Если нет - требуется доп информация. Если в результате анализа ивентов пришедших тебе на вход ты считаешь, что опросник пройден полноценно, сделай result.is_survey_passed \n =true когда будешь структурировать результат\nответы пользователя всегда складывай в result.answers по json схеме указанной в output parser\n\nпредыдущие ивенты:\n{{ JSON.stringify($json.brief_and_survey_events) }}\n\nОтвет на текущей итерации опроса:\n{{ $json.current_suvrey_answer }}\n\nТебе нужно название и описание поля с текущим ответом и если ответ не относится к полю, то по нему нужно задать уточняющие вопросы.\n\nне завершай опросник пока не будешь уверен что все ответы относятся к тем вопросам/полям к которым они прилинкованы в формате json\n\nЕсли опросник не устроил, всегда указывай в questions_to_ask \n1) что не так в предыдущих ответах\n2) конкретные вопросы на которые надо доответить\n\nСтарайся придерживаться вопросов, которые касаются непосредственно полей payload события TG_CHAT_FUNNELS_BRIEF_FORM_COMPLETED\n\nСмотри на свое сообщение в TG_CHAT_FUNNELS_ADDITIONAL_SURVEY_REQUESTED и как бы продолжай диалог. Не нужно здороваться еще раз, если ты уже здоровался. Можешь же следить за своей памятью для того чтобы понять.\n",
         "hasOutputParser": true,
         "options": {
           "systemMessage": "Ты — эксперт-маркетолог и аналитик по воронкам продаж. Твоя задача — проанализировать бриф, заполненный пользователем, чтобы выявить слабые места, недостающую информацию или слишком общие формулировки. На основе этого анализа ты должен сформировать список уточняющих вопросов. Твоя конечная цель — собрать достаточно данных для разработки эффективной маркетинговой стратегии и воронки продаж.\n\n"
@@ -572,7 +550,7 @@
       "typeVersion": 2.2,
       "position": [
         224,
-        592
+        1312
       ],
       "id": "ffd54c3b-6425-4f17-bec0-d896cb94a203",
       "name": "Brief clarification",
@@ -588,7 +566,7 @@
       "typeVersion": 2.6,
       "position": [
         1360,
-        400
+        1024
       ],
       "id": "e659fc80-db9d-45ae-b4f3-c3d95e81b342",
       "name": "TG_CHAT_FUNNELS_ADDITIONAL_SURVEY_COMPLETED",
@@ -609,8 +587,8 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        1584,
-        848
+        1360,
+        1616
       ],
       "id": "4db96be4-3420-48bf-bd51-01643d066395",
       "name": "TG_CHAT_FUNNELS_ADDITIONAL_SURVEY_REQUESTED",
@@ -784,7 +762,7 @@
       "typeVersion": 3.4,
       "position": [
         -736,
-        656
+        1392
       ],
       "id": "2c029198-6270-420d-867f-02defe3a7fdf",
       "name": "Answers to json keys"
@@ -797,7 +775,7 @@
       "typeVersion": 2,
       "position": [
         -64,
-        352
+        1136
       ],
       "id": "8e3046d3-9ba4-4055-9f06-fee16bcb9790",
       "name": "EXTRACT briefs and surveys"
@@ -812,7 +790,7 @@
       "typeVersion": 2.6,
       "position": [
         -736,
-        224
+        944
       ],
       "id": "2727798d-f870-40bf-a669-a40e00c6d66d",
       "name": "TG_CHAT_MESSAGE_RECEIVED",
@@ -864,7 +842,7 @@
       "typeVersion": 3.2,
       "position": [
         -960,
-        128
+        848
       ],
       "id": "7b75931e-c476-4abe-a18c-6606f7c9f385",
       "name": "Command Switch"
@@ -879,7 +857,7 @@
       "typeVersion": 2.6,
       "position": [
         -736,
-        32
+        752
       ],
       "id": "562c697b-5340-460f-88f3-02b8920dd91c",
       "name": "RESET CHAT",
@@ -910,7 +888,7 @@
       "typeVersion": 2.3,
       "position": [
         -1184,
-        1184
+        1936
       ],
       "id": "003c074a-dddc-4d3e-bd9c-05af4b19b6ba",
       "name": "On form submission2",
@@ -925,7 +903,7 @@
       "typeVersion": 2,
       "position": [
         1072,
-        400
+        1024
       ],
       "id": "76c29068-e613-456d-95c1-a28c763c23dc",
       "name": "Build survey state"
@@ -940,7 +918,7 @@
       "typeVersion": 2.6,
       "position": [
         1808,
-        32
+        768
       ],
       "id": "5ee0ec25-f911-4bd2-9476-0ad66f778161",
       "name": "GET BRIEF EVENTS",
@@ -969,7 +947,7 @@
       "typeVersion": 1,
       "position": [
         2032,
-        96
+        864
       ],
       "id": "062b2e44-2eaa-41ba-bf43-99b4bbbc5040",
       "name": "Aggregate"
@@ -983,7 +961,7 @@
       "typeVersion": 1.3,
       "position": [
         2384,
-        560
+        1328
       ],
       "id": "eeabd23a-f621-4aae-8c4f-0c9ea371b874",
       "name": "Postgres Chat Memory",
@@ -1003,7 +981,7 @@
       "typeVersion": 1.3,
       "position": [
         288,
-        816
+        1536
       ],
       "id": "3d62c3c6-5d0d-4d12-9e82-e5f890940224",
       "name": "Postgres Chat Memory1",
@@ -1089,7 +1067,7 @@
       "typeVersion": 2.3,
       "position": [
         -1184,
-        656
+        1392
       ],
       "id": "3d760c22-9ec0-4b03-b59b-b3505ed14060",
       "name": "Brief Form",
@@ -1105,7 +1083,7 @@
       "typeVersion": 2.6,
       "position": [
         2880,
-        336
+        1104
       ],
       "id": "52afeb91-9d9a-42da-9de1-11afbd34360b",
       "name": "FUNNEL_SELECTED",
@@ -1127,7 +1105,7 @@
       "typeVersion": 2.6,
       "position": [
         1808,
-        400
+        1024
       ],
       "id": "ab33ef46-69d4-42b8-95f0-311dbed5696a",
       "name": "GET BRIEF EVENTS1",
@@ -1153,7 +1131,7 @@
       "typeVersion": 1.2,
       "position": [
         160,
-        816
+        1536
       ],
       "id": "33f264e5-32a9-43a4-931d-d52289b449be",
       "name": "OpenAI Chat Model2",
@@ -1178,7 +1156,7 @@
       "typeVersion": 1.2,
       "position": [
         2256,
-        560
+        1328
       ],
       "id": "8b6d70c2-1c8f-49df-89ed-eea4fb2ac0d9",
       "name": "OpenAI Chat Model3",
@@ -1203,7 +1181,7 @@
       "typeVersion": 1.2,
       "position": [
         1088,
-        976
+        1440
       ],
       "id": "4fc53639-46a1-46b5-84ca-206eddee5a3a",
       "name": "OpenAI Chat Model",
@@ -1226,7 +1204,7 @@
       "typeVersion": 1.2,
       "position": [
         -64,
-        -112
+        624
       ],
       "id": "de7500e5-f866-4035-811f-5b568318d528",
       "name": "Send a text message1",
@@ -1250,7 +1228,7 @@
       "typeVersion": 1.2,
       "position": [
         -512,
-        32
+        752
       ],
       "id": "153236ca-48fe-4c77-a851-0da15c0551b0",
       "name": "Send a text message2",
@@ -1271,7 +1249,7 @@
       "typeVersion": 2,
       "position": [
         -512,
-        656
+        1392
       ],
       "id": "5be1bbaf-931f-4983-9c7d-b320d3101f4b",
       "name": "Build TG_CHAT_FUNNELS_BRIEF_FORM_COMPLETED"
@@ -1288,7 +1266,7 @@
       "typeVersion": 2.2,
       "position": [
         1008,
-        752
+        1216
       ],
       "id": "3302c0e4-e7d6-47dd-8511-83146e5ffcd0",
       "name": "JSON результат Опросника в человеческие вопросы"
@@ -1296,7 +1274,7 @@
     {
       "parameters": {
         "chatId": "={{ $json.chat_id }}",
-        "text": "Пожалуйста подождите, я анализирую данные по вашему БИЗНЕСУ",
+        "text": "=Пожалуйста подождите, пока я проанализирую предоставленные данные ⌛",
         "additionalFields": {
           "appendAttribution": false
         }
@@ -1305,7 +1283,7 @@
       "typeVersion": 1.2,
       "position": [
         368,
-        176
+        912
       ],
       "id": "9d931832-e168-4769-922e-f6945621eb9c",
       "name": "Notify Thinking of business",
@@ -1320,7 +1298,7 @@
     {
       "parameters": {
         "chatId": "={{ $json.event[0].chat_id }}",
-        "text": "=Пожалуйста подождите, я выбираю вам воронку продаж.",
+        "text": "=Пожалуйста подождите, я разрабатываю воронку продаж под ваши нужды 💰.",
         "additionalFields": {
           "appendAttribution": false
         }
@@ -1329,7 +1307,7 @@
       "typeVersion": 1.2,
       "position": [
         2464,
-        -80
+        704
       ],
       "id": "cad62cb8-3365-4717-871f-b5307cfb363d",
       "name": "Thinking of funnel",
@@ -1349,11 +1327,274 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1360,
-        832
+        1072,
+        1616
       ],
       "id": "dbc6f62d-5cbb-41a6-ba5a-4fcb5aab0a4d",
       "name": "Build survey requested event"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "tableName": "funnel_types",
+        "embeddingBatchSize": 1,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePGVector",
+      "typeVersion": 1.3,
+      "position": [
+        -288,
+        1936
+      ],
+      "id": "1df68b7d-ad85-485c-a57f-9cc0414bfe03",
+      "name": "Insert document",
+      "credentials": {
+        "postgres": {
+          "id": "H7wrBOGXpuFXc64X",
+          "name": "funnels_state_db"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "preBuiltAgentsCalloutHttpRequest": "",
+        "httpVariantWarning": "",
+        "curlImport": "",
+        "method": "POST",
+        "": "",
+        "url": "https://api.miro.com/v2/boards",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "miroOAuth2Api",
+        "provideSslCertificates": false,
+        "sendQuery": false,
+        "sendHeaders": false,
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "keypair",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "description",
+              "value": "Доска для воронки"
+            },
+            {
+              "name": "name",
+              "value": "Доска для воронки"
+            },
+            {
+              "name": "teamId",
+              "value": "3458764641020856101"
+            }
+          ]
+        },
+        "options": {},
+        "infoMessage": ""
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -672,
+        -32
+      ],
+      "id": "cc3cd6f2-8ad2-4fdd-bb2a-deddb98843a2",
+      "name": "Miro HTTP Request",
+      "extendsCredential": "miroOAuth2Api",
+      "credentials": {
+        "miroOAuth2Api": {
+          "id": "wdkYWSksyBYwmZFv",
+          "name": "yvshneider miro"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "preBuiltAgentsCalloutHttpRequest": "",
+        "httpVariantWarning": "",
+        "curlImport": "",
+        "method": "GET",
+        "": "",
+        "url": "https://api.miro.com/v2/boards",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "miroOAuth2Api",
+        "provideSslCertificates": false,
+        "sendQuery": false,
+        "sendHeaders": true,
+        "specifyHeaders": "keypair",
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "",
+              "value": ""
+            }
+          ]
+        },
+        "sendBody": false,
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": false,
+              "responseFormat": "autodetect"
+            }
+          }
+        },
+        "infoMessage": ""
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1184,
+        -176
+      ],
+      "id": "6a3bb088-58d9-424b-8ef1-f9830c3482c4",
+      "name": "Miro HTTP Request1",
+      "extendsCredential": "miroOAuth2Api",
+      "credentials": {
+        "miroOAuth2Api": {
+          "id": "wdkYWSksyBYwmZFv",
+          "name": "yvshneider miro"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "0f182f97-aa9b-42e9-a6ab-7d4d765b8b9d",
+              "leftValue": "={{ $json.body.data }}",
+              "rightValue": "",
+              "operator": {
+                "type": "array",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -960,
+        -176
+      ],
+      "id": "a9908147-754e-43f4-9e72-4eca3f3bf14d",
+      "name": "Есть доска?"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        -736,
+        -432
+      ],
+      "id": "0a54a143-b1a1-4261-867d-8c852bdeadf2",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -736,
+        -208
+      ],
+      "id": "8d4043fa-7b6f-48f5-99b9-99d50fe4f845",
+      "name": "OpenAI Chat Model4",
+      "credentials": {
+        "openAiApi": {
+          "id": "mrmnOe1SW7Qiuamb",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "dafdfsdfsdf6e8-ea19-43b7-b337-a5iuodsf98vjfewf"
+      },
+      "id": "84337a0e-8574-4db2-9f37-1fe7b1481c85",
+      "name": "Context7 MCP Server Trigger",
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "position": [
+        -1184,
+        304
+      ],
+      "webhookId": "c597b9e9-33bf-41d9-8602-e63d2bee174b",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "description": "=Processes a natural language query to find and retrieve software library documentation using Context7. It intelligently uses sub-tools to first resolve library names to Context7 IDs and then fetches the relevant documentation.",
+        "workflowId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "vqujIu65SFbZUz0n",
+          "cachedResultName": "Context7 Smithery AI Agent MCP Server"
+        },
+        "workflowInputs": {
+          "value": {
+            "query": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('query', `The user's natural language question or request for software library documentation. For example: 'How do I implement authentication in Next.js?' or 'Get docs for MongoDB aggregation framework'.`, 'string') }}"
+          },
+          "schema": [
+            {
+              "id": "query",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "query",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            }
+          ],
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "id": "da930e02-0993-4fea-aaaa-0a5fdd8bee5d",
+      "name": "call_context7_ai_agent",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "position": [
+        -1120,
+        528
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "endpointUrl": "http://miro-mcp:3001/sse",
+        "include": "selected",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1.1,
+      "position": [
+        -608,
+        -208
+      ],
+      "id": "dbcfd852-2c42-4a7a-954c-54c51939fae1",
+      "name": "Miro MCP"
     }
   ],
   "connections": {
@@ -1372,7 +1613,7 @@
       "ai_embedding": [
         [
           {
-            "node": "Postgres PGVector Store1",
+            "node": "Insert document",
             "type": "ai_embedding",
             "index": 0
           }
@@ -1383,7 +1624,7 @@
       "ai_document": [
         [
           {
-            "node": "Postgres PGVector Store1",
+            "node": "Insert document",
             "type": "ai_document",
             "index": 0
           }
@@ -1416,7 +1657,7 @@
       "main": [
         [
           {
-            "node": "Postgres PGVector Store1",
+            "node": "Insert document",
             "type": "main",
             "index": 0
           }
@@ -1555,6 +1796,11 @@
         [
           {
             "node": "JSON результат Опросника в человеческие вопросы",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Build survey requested event",
             "type": "main",
             "index": 0
           }
@@ -1836,11 +2082,6 @@
       "main": [
         [
           {
-            "node": "Build survey requested event",
-            "type": "main",
-            "index": 0
-          },
-          {
             "node": "Запрос survey",
             "type": "main",
             "index": 0
@@ -1863,10 +2104,278 @@
           }
         ]
       ]
+    },
+    "Miro HTTP Request": {
+      "main": [
+        []
+      ]
+    },
+    "Miro HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Есть доска?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Есть доска?": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Miro HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "call_context7_ai_agent": {
+      "ai_tool": [
+        [
+          {
+            "node": "Context7 MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Miro MCP": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "pinData": {},
+  "pinData": {
+    "TG_MESSAGE_RECEIVED": [
+      {
+        "update_id": 237444611,
+        "message": {
+          "message_id": 206,
+          "from": {
+            "id": 212935169,
+            "is_bot": false,
+            "first_name": "Iaroslav",
+            "username": "verse537",
+            "language_code": "ru",
+            "is_premium": true
+          },
+          "chat": {
+            "id": 212935169,
+            "first_name": "Iaroslav",
+            "username": "verse537",
+            "type": "private"
+          },
+          "date": 1758212408,
+          "text": "Конечно, вот заполненный бриф на основе гипотетического проекта в сфере разработки игр, который может соответствовать вашим интересам.\n\n***\n\nЗдравствуйте! Благодарю за вопросы. Предоставляю подробную информацию о нашем проекте для разработки маркетинговой стратегии.\n\n1.  Стоимость продукта: Мы работаем по модели подписки (SaaS). У нас три основных тарифа:\n    *   Indie: $49/месяц. Включает 1 проект, до 10,000 активных пользователей в месяц (MAU), базовую аналитику производительности и отчеты по сбоям.\n    *   Studio: $249/месяц. Включает до 5 проектов, до 100,000 MAU, расширенную аналитику, интеграцию с Jira и Slack, анализ ассетов.\n    *   Enterprise: от $999/месяц (индивидуальный расчет). Включает неограниченное количество проектов и MAU, выделенного менеджера, кастомные интеграции и доступ к API.\n\n2.  Ниша проекта: Наша ниша — это инструменты для оптимизации и мониторинга производительности мобильных игр на движке Unity. Мы помогаем разработчикам выявлять и устранять \"узкие места\" в производительности, снижать количество сбоев и уменьшать размер билда игры, что напрямую влияет на удержание пользователей и доход.\n\n3.  Описание продукта: Наш продукт — это SaaS-платформа \"PerfOptimizator\". Она интегрируется в игровой проект на Unity через легкий SDK. Платформа в реальном времени собирает данные о производительности (FPS, использование памяти, нагрузка на CPU/GPU) с устройств конечных пользователей.\n    *   Ключевые функции:\n        *   Real-time Performance Monitoring: Дашборды с метриками производительности в разрезе устройств, версий ОС и билдов.\n        *   Crash Reporting: Автоматический сбор и группировка отчетов о сбоях с подробными стектрейсами.\n        *   Asset Analysis: Инструмент, который анализирует ассеты проекта и дает рекомендации по их оптимизации (например, сжатие текстур, оптимизация моделей).\n        *   Build Size Tracker: Отслеживание размера игрового билда и его компонентов для контроля над его ростом.\n\n4.  Целевая аудитория (ЦА):\n    *   Первичная ЦА: Инди-разработчики и небольшие студии (2-15 человек), которые создают мобильные игры на Unity. У них ограниченные ресурсы для ручного тестирования производительности на широком парке устройств.\n    *   Вторичная ЦА: Технические лиды (Technical Leads) и инженеры по производительности (Performance Engineers) в средних и крупных игровых студиях, которые ищут специализированное решение для глубокого анализа и автоматизации мониторинга.\n\n5.  Конкуренты:\n    *   Unity Performance Monitoring (UPM): Прямой конкурент от самого Unity. Наше преимущество: более глубокий анализ и более гибкие тарифы для инди. Ссылка: https://unity.com/solutions/performance-reporting\n    *   GameAnalytics: Предоставляют бесплатную базовую аналитику, включая некоторые метрики производительности. Наше преимущество: фокус именно на глубокой технической оптимизации, а не на продуктовых метриках. Ссылка: https://gameanalytics.com/\n    *   Sentry / Bugsnag: Специализируются на отчетах об ошибках, но их инструментарий для игровой производительности ограничен. Наше преимущество: комплексное решение \"все в одном\" для производительности игр. Ссылка: https://sentry.io/for/gaming/\n\n6.  Опыт проведения вебинаров: Мы провели 2 вебинара для русскоязычной аудитории на тему \"Как найти и исправить просадки FPS в мобильной игре на Unity\".\n    *   Результаты: Суммарно было около 350 регистраций и 150 участников онлайн.\n    *   Конверсия: В регистрацию на триал конвертировалось около 5% участников. Конверсия в платящего клиента после триала составила ~10% от зарегистрировавшихся. Результат считаем скромным, воронку нужно дорабатывать.\n\n7.  Маркетинговый бюджет: Мы готовы выделить $15,000 на первые 3 месяца ($5,000/месяц). Бюджет гибкий и может быть увеличен при достижении целевых показателей CAC (Customer Acquisition Cost).",
+          "entities": [
+            {
+              "offset": 272,
+              "length": 19,
+              "type": "bold"
+            },
+            {
+              "offset": 366,
+              "length": 6,
+              "type": "bold"
+            },
+            {
+              "offset": 515,
+              "length": 7,
+              "type": "bold"
+            },
+            {
+              "offset": 649,
+              "length": 11,
+              "type": "bold"
+            },
+            {
+              "offset": 816,
+              "length": 13,
+              "type": "bold"
+            },
+            {
+              "offset": 846,
+              "length": 90,
+              "type": "bold"
+            },
+            {
+              "offset": 1138,
+              "length": 18,
+              "type": "bold"
+            },
+            {
+              "offset": 1190,
+              "length": 17,
+              "type": "bold"
+            },
+            {
+              "offset": 1430,
+              "length": 17,
+              "type": "bold"
+            },
+            {
+              "offset": 1460,
+              "length": 33,
+              "type": "bold"
+            },
+            {
+              "offset": 1587,
+              "length": 16,
+              "type": "bold"
+            },
+            {
+              "offset": 1693,
+              "length": 15,
+              "type": "bold"
+            },
+            {
+              "offset": 1855,
+              "length": 19,
+              "type": "bold"
+            },
+            {
+              "offset": 1963,
+              "length": 23,
+              "type": "bold"
+            },
+            {
+              "offset": 1995,
+              "length": 13,
+              "type": "bold"
+            },
+            {
+              "offset": 2009,
+              "length": 51,
+              "type": "bold"
+            },
+            {
+              "offset": 2210,
+              "length": 13,
+              "type": "bold"
+            },
+            {
+              "offset": 2224,
+              "length": 91,
+              "type": "bold"
+            },
+            {
+              "offset": 2449,
+              "length": 11,
+              "type": "bold"
+            },
+            {
+              "offset": 2469,
+              "length": 35,
+              "type": "bold"
+            },
+            {
+              "offset": 2620,
+              "length": 49,
+              "type": "code"
+            },
+            {
+              "offset": 2678,
+              "length": 14,
+              "type": "bold"
+            },
+            {
+              "offset": 2890,
+              "length": 26,
+              "type": "code"
+            },
+            {
+              "offset": 2925,
+              "length": 17,
+              "type": "bold"
+            },
+            {
+              "offset": 3135,
+              "length": 29,
+              "type": "code"
+            },
+            {
+              "offset": 3170,
+              "length": 26,
+              "type": "bold"
+            },
+            {
+              "offset": 3327,
+              "length": 11,
+              "type": "bold"
+            },
+            {
+              "offset": 3408,
+              "length": 10,
+              "type": "bold"
+            },
+            {
+              "offset": 3624,
+              "length": 21,
+              "type": "bold"
+            },
+            {
+              "offset": 3665,
+              "length": 26,
+              "type": "bold"
+            }
+          ]
+        }
+      }
+    ],
+    "Brief Form": [
+      {
+        "В какой нише ваш проект?": "инфом",
+        "Какой у вас продукт?": "инфом",
+        "Стоимость продукта": "'инфом''",
+        "Опишите целевую аудиторию": "'инфом'",
+        "Скиньте ссылки на конкурентов": "инфом",
+        "Какие результаты окупаемости воронки для вас будут оптимальны?": [
+          "ROAS более 100%"
+        ],
+        "Какой у вас бюджет на рекламу?": "инфом",
+        "В каких каналах планируете трафик?": "инфом",
+        "Какие воронки уже тестировали?": "инфом",
+        "Был ли опыт проведения онлайн-вебинаров?": "инфом",
+        "Дополнительные комментарии": "инфом",
+        "chat_id": "212935169",
+        "submittedAt": "2025-09-18T12:47:31.864-04:00",
+        "formMode": "production",
+        "formQueryParameters": {
+          "chat_id": "212935169"
+        }
+      }
+    ]
+  },
   "meta": {
+    "templateCredsSetupCompleted": true,
     "instanceId": "d19e1b26c0b8d95659d042a7491aa0358608320cfa3f09b4a3a78387d58037a3"
   }
 }
